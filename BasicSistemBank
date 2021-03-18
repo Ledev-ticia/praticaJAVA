@@ -1,0 +1,167 @@
+import java.util.Scanner;
+
+public class ClassePrincipalBanco {
+
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		
+		ContaBancaria conta = new ContaBancaria();
+		
+		conta.nomeBanco = "Your Bank";
+		conta.nomeTitular = "Mary **";
+		conta.tipoConta = 'C';
+		conta.saldo = (float) 1500.00;
+		conta.numeroAgencia = 2345;
+		conta.numeroConta = 003345;
+		conta.saque = 0;
+		
+		
+		
+		
+		System.out.println("Hello Welcome to your BANK account! :)");
+		System.out.println("What you want to access your account for? \n 1 - To withdraw\n 2 - For deposit\n 3 - For bank statement");
+		int acessar = sc.nextInt(); 
+				
+		switch (acessar) {
+		
+		case 1: 
+			
+			conta.sacar();
+			
+			
+			break;
+		case 2: 
+			
+			conta.depositar();
+			
+			break;
+		
+		case 3:
+			
+			conta.imprimir();
+			break;
+			
+		default: System.out.println("Thank you for using our system. =)");
+			break;
+		
+		}
+			
+
+	}
+
+}
+import java.util.Scanner;
+
+public class ContaBancaria {
+	
+	Scanner sc = new Scanner (System.in);
+	
+	String nomeBanco;
+	String nomeTitular;
+	char tipoConta;
+	float saldo;
+	int numeroAgencia;
+	int numeroConta;
+	float saque;
+	
+	void sacar (){
+		System.out.println("To withdraw - Enter the withdrawal amount: ");
+		saque = sc.nextFloat(); 
+		
+		
+		if(saldo >= saque) {
+			
+			System.out.println("Successfully authorized!");
+			 saldo = saldo - saque;
+			
+			System.out.printf("Your account balance is : " + saldo);
+			
+			
+		}else {
+			
+			System.out.println("Insufficient funds");
+			
+		}
+		
+		
+		
+	}
+	void depositar (){
+		
+		
+		System.out.println("Choose the type of deposit \n [1] Cash\n [2] Bank check \n"  );
+		int tipo = sc.nextInt(); 
+		
+		switch(tipo) {
+		case 1:
+			System.out.println("Enter the deposit amounto\n ");
+			float valor1 = sc.nextFloat(); 
+			System.out.println("Amount to be deposited " + valor1);
+			System.out.println("Confirm deposit?\n [1] Yes [2] No\n"  );
+			int confirma = sc.nextInt();
+			
+			if( confirma == 1) {
+				
+			System.out.println("Insert your deposit in the indicated location\n");
+			System.out.println("After deposit, press [0] to finish\n" );
+			int zero = sc.nextInt();
+			
+			switch(zero) {
+				
+			case 0: 
+				System.out.printf("Successful deposit!!  :)");
+			break;
+			default: System.out.printf("Invalid Option!!  :)");	
+			}
+
+			}else {
+				
+				System.out.println("Canceled deposit! \n THANK YOU FOR USING YOUR BANKING SYSTEM\n");
+			}
+			break;
+		case 2:
+			System.out.println("Enter the deposit amount\n ");
+			float valor2 = sc.nextFloat(); 
+			System.out.println("Amount to be deposited" + valor2);
+			System.out.println("Confirm deposit?\n [1] sim [2] não\n"  );
+			int confirma1 = sc.nextInt();
+			
+			if( confirma1 == 1) {
+				
+			System.out.println("Insert your deposit in the indicated location\n"  );
+			System.out.println("After deposit, press [0] to finish\n" );
+			int zero1 = sc.nextInt();
+			
+			switch(zero1) {
+			
+			case 0: 
+				System.out.printf("Successful deposit!!  :)");
+			break;
+			default: System.out.printf("Invalid Option!!  :)");	
+			}
+
+			System.out.printf("Successful deposit!!  :)");	
+			
+
+			System.out.printf("Successful deposit!!  :)");	
+			}else {
+				
+				System.out.println("Canceled deposit! \\n THANK YOU FOR USING YOUR BANKING SYSTEM\\n");
+			}
+			
+			
+		}
+		
+	}
+	
+	void imprimir (){
+		
+		System.out.println("Statement print successfully printed \nBANK NAME: "+ nomeBanco  + "\nNAME: " + nomeTitular  + "\nBALANCE AVAILABLE: " + saldo + "\nBANKING AGENCY: "+  numeroAgencia + "\n\r\n"
+				+ "ACCOUNT: " + numeroConta + "\nACCOUNT TYPE: " + tipoConta);
+		 
+	}
+
+}
+
+
